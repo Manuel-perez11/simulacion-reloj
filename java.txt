@@ -1,0 +1,43 @@
+import java.util.Scanner;
+public class SimulaciondeReloj{
+        public static void main(String[] args){
+                Scanner scan=new Scanner(System.in);
+                //pedir y validar fecha inicial
+                System.out.println("Ingresa la hora inicial en formato de 24 horas hh:mm:ss ");
+                String[] horaInicialArreglo = scan.next().split(":");
+                int hora1=Integer.parseInt(horaInicialArreglo[0]);
+                int mins1=Integer.parseInt(horaInicialArreglo[1]);
+                int segs1=Integer.parseInt(horaInicialArreglo[2]);
+                if(!validarHora(hora1,mins1,segs1)){
+                        System.out.println("¡La fecha inicial no es válida!");
+                        System.exit(1);
+                }
+ 
+                //pedir y validar fecha final
+                System.out.println("Ingresa la hora inicial en formato de 24 horas hh:mm:ss ");
+                String[] horaFinalArreglo = scan.next().split(":");
+                int hora2=Integer.parseInt(horaFinalArreglo[0]);
+                int mins2=Integer.parseInt(horaFinalArreglo[1]);
+                int segs2=Integer.parseInt(horaFinalArreglo[2]);
+                if(!validarHora(hora2,mins2,segs2)){
+                        System.out.println("¡La fecha final no es válida!");
+                        System.exit(1);
+                }
+ 
+                //validar que la fecha inicial debe ser menor a la final
+                if(hora1>=hora2)
+                        if(mins1>=mins2)
+                                if(segs1>=segs2){
+                                        System.out.println("Error: ¡La hora FINAL debe ser MAYOR a la inicial!");
+                                        System.exit(0);
+                                }
+                System.out.println("Las horas son correctas. :)");
+        }
+ 
+        private static boolean validarHora(int hora,int min,int seg){
+                if((hora>=0 && hora<=23) && (min>=0 && min<=59) && (seg>=0 && seg<=59))
+                        return true;
+                else
+                        return false;
+        }
+}
